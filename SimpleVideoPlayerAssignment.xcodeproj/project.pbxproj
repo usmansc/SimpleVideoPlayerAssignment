@@ -15,6 +15,8 @@
 		80E0C56B26B72A2200C6435F /* VideoFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E0C56A26B72A2200C6435F /* VideoFetcher.swift */; };
 		80E0C56E26B72A4000C6435F /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E0C56D26B72A4000C6435F /* Video.swift */; };
 		80E0C57126B72A5500C6435F /* InOutParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E0C57026B72A5500C6435F /* InOutParameter.swift */; };
+		80E0C57426B72CCD00C6435F /* VideoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E0C57326B72CCD00C6435F /* VideoManager.swift */; };
+		80E0C57726B72CF200C6435F /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E0C57626B72CF200C6435F /* VideoPlayerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		80E0C56A26B72A2200C6435F /* VideoFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFetcher.swift; sourceTree = "<group>"; };
 		80E0C56D26B72A4000C6435F /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		80E0C57026B72A5500C6435F /* InOutParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InOutParameter.swift; sourceTree = "<group>"; };
+		80E0C57326B72CCD00C6435F /* VideoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoManager.swift; sourceTree = "<group>"; };
+		80E0C57626B72CF200C6435F /* VideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +97,7 @@
 		80E0C56326B7297800C6435F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				80E0C57626B72CF200C6435F /* VideoPlayerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -100,6 +105,7 @@
 		80E0C56426B7298200C6435F /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				80E0C57326B72CCD00C6435F /* VideoManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -188,6 +194,8 @@
 				80E0C57126B72A5500C6435F /* InOutParameter.swift in Sources */,
 				80E0C56B26B72A2200C6435F /* VideoFetcher.swift in Sources */,
 				80E0C55326B6FC3600C6435F /* SimpleVideoPlayerAssignmentApp.swift in Sources */,
+				80E0C57426B72CCD00C6435F /* VideoManager.swift in Sources */,
+				80E0C57726B72CF200C6435F /* VideoPlayerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
