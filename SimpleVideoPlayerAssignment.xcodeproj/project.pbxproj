@@ -17,6 +17,8 @@
 		80E0C57126B72A5500C6435F /* InOutParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E0C57026B72A5500C6435F /* InOutParameter.swift */; };
 		80E0C57426B72CCD00C6435F /* VideoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E0C57326B72CCD00C6435F /* VideoManager.swift */; };
 		80E0C57726B72CF200C6435F /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E0C57626B72CF200C6435F /* VideoPlayerView.swift */; };
+		80E0C57A26B7C57C00C6435F /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E0C57926B7C57C00C6435F /* DetailView.swift */; };
+		80E0C57D26B7C5A100C6435F /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E0C57C26B7C5A100C6435F /* DetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		80E0C57026B72A5500C6435F /* InOutParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InOutParameter.swift; sourceTree = "<group>"; };
 		80E0C57326B72CCD00C6435F /* VideoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoManager.swift; sourceTree = "<group>"; };
 		80E0C57626B72CF200C6435F /* VideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
+		80E0C57926B7C57C00C6435F /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		80E0C57C26B7C5A100C6435F /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +73,6 @@
 				80E0C56326B7297800C6435F /* View */,
 				80E0C56226B7296C00C6435F /* ViewModel */,
 				80E0C55226B6FC3600C6435F /* SimpleVideoPlayerAssignmentApp.swift */,
-				80E0C55426B6FC3600C6435F /* ContentView.swift */,
 				80E0C55626B6FC4400C6435F /* Assets.xcassets */,
 				80E0C55B26B6FC4400C6435F /* Info.plist */,
 				80E0C55826B6FC4400C6435F /* Preview Content */,
@@ -90,6 +93,7 @@
 		80E0C56226B7296C00C6435F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				80E0C57C26B7C5A100C6435F /* DetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -97,7 +101,9 @@
 		80E0C56326B7297800C6435F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				80E0C55426B6FC3600C6435F /* ContentView.swift */,
 				80E0C57626B72CF200C6435F /* VideoPlayerView.swift */,
+				80E0C57926B7C57C00C6435F /* DetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -190,8 +196,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				80E0C55526B6FC3600C6435F /* ContentView.swift in Sources */,
+				80E0C57A26B7C57C00C6435F /* DetailView.swift in Sources */,
 				80E0C56E26B72A4000C6435F /* Video.swift in Sources */,
 				80E0C57126B72A5500C6435F /* InOutParameter.swift in Sources */,
+				80E0C57D26B7C5A100C6435F /* DetailViewModel.swift in Sources */,
 				80E0C56B26B72A2200C6435F /* VideoFetcher.swift in Sources */,
 				80E0C55326B6FC3600C6435F /* SimpleVideoPlayerAssignmentApp.swift in Sources */,
 				80E0C57426B72CCD00C6435F /* VideoManager.swift in Sources */,
