@@ -7,16 +7,18 @@
 
 import Foundation
 
-class VideoManager{
+class VideoManager {
     static var shared: VideoManager?
-    
+
     init() {
         VideoManager.shared = self
     }
-    
-    func fetchVideos() -> [Video]{
+
+    /// Use this function to fetch videos from json file
+    /// - Returns: array of Video structures
+    func fetchVideos() -> [Video] {
         let videoFetcher = VideoFetcher()
         return videoFetcher.videos
     }
-    
+
 }

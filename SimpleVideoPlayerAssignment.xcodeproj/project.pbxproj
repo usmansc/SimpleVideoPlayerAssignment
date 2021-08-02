@@ -19,6 +19,9 @@
 		80E0C57726B72CF200C6435F /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E0C57626B72CF200C6435F /* VideoPlayerView.swift */; };
 		80E0C57A26B7C57C00C6435F /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E0C57926B7C57C00C6435F /* DetailView.swift */; };
 		80E0C57D26B7C5A100C6435F /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E0C57C26B7C5A100C6435F /* DetailViewModel.swift */; };
+		80E0C58326B813E800C6435F /* InOutZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E0C58226B813E800C6435F /* InOutZone.swift */; };
+		80E0C58626B8141A00C6435F /* VerticalLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E0C58526B8141A00C6435F /* VerticalLine.swift */; };
+		80E0C58926B8143500C6435F /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E0C58826B8143500C6435F /* Slider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,9 @@
 		80E0C57626B72CF200C6435F /* VideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
 		80E0C57926B7C57C00C6435F /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		80E0C57C26B7C5A100C6435F /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		80E0C58226B813E800C6435F /* InOutZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InOutZone.swift; sourceTree = "<group>"; };
+		80E0C58526B8141A00C6435F /* VerticalLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalLine.swift; sourceTree = "<group>"; };
+		80E0C58826B8143500C6435F /* Slider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +110,9 @@
 				80E0C55426B6FC3600C6435F /* ContentView.swift */,
 				80E0C57626B72CF200C6435F /* VideoPlayerView.swift */,
 				80E0C57926B7C57C00C6435F /* DetailView.swift */,
+				80E0C58226B813E800C6435F /* InOutZone.swift */,
+				80E0C58526B8141A00C6435F /* VerticalLine.swift */,
+				80E0C58826B8143500C6435F /* Slider.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -135,6 +144,7 @@
 				80E0C54B26B6FC3600C6435F /* Sources */,
 				80E0C54C26B6FC3600C6435F /* Frameworks */,
 				80E0C54D26B6FC3600C6435F /* Resources */,
+				80E0C57F26B7C6D300C6435F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -190,12 +200,33 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		80E0C57F26B7C6D300C6435F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint autocorrect\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		80E0C54B26B6FC3600C6435F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				80E0C55526B6FC3600C6435F /* ContentView.swift in Sources */,
+				80E0C58626B8141A00C6435F /* VerticalLine.swift in Sources */,
 				80E0C57A26B7C57C00C6435F /* DetailView.swift in Sources */,
 				80E0C56E26B72A4000C6435F /* Video.swift in Sources */,
 				80E0C57126B72A5500C6435F /* InOutParameter.swift in Sources */,
@@ -204,6 +235,8 @@
 				80E0C55326B6FC3600C6435F /* SimpleVideoPlayerAssignmentApp.swift in Sources */,
 				80E0C57426B72CCD00C6435F /* VideoManager.swift in Sources */,
 				80E0C57726B72CF200C6435F /* VideoPlayerView.swift in Sources */,
+				80E0C58926B8143500C6435F /* Slider.swift in Sources */,
+				80E0C58326B813E800C6435F /* InOutZone.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,7 +377,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lukasschmelcer.SimpleVideoPlayerAssignment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -366,7 +399,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lukasschmelcer.SimpleVideoPlayerAssignment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

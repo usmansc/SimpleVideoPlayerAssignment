@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct SimpleVideoPlayerAssignmentApp: App {
+    @StateObject var detailViewModel: DetailViewModel = DetailViewModel()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(detailViewModel)
         }
     }
 }

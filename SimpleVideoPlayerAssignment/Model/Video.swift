@@ -7,8 +7,7 @@
 
 import Foundation
 
-struct Video: Identifiable, Decodable, Hashable{
-    
+struct Video: Identifiable, Decodable, Hashable {
     var id: Int
     var name: String
     var url: String

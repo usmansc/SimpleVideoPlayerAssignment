@@ -7,23 +7,23 @@
 
 import Foundation
 
-class VideoFetcher: ObservableObject{
+class VideoFetcher: ObservableObject {
     @Published var videos: [Video] = []
-    
+
     init() {
-        do{
+        do {
             if let resource = Bundle.main.path(forResource: "video", ofType: "json") {
                 let json = try String(contentsOfFile: resource)
-                    do{
+                    do {
                         let decoder = JSONDecoder()
                         let data = Data(json.utf8)
                         let decoded = try decoder.decode([Video].self, from: data)
                         self.videos = decoded
-                    } catch{
+                    } catch {
                         print("Could not parse JSON")
                     }
             }
-        } catch{
+        } catch {
             print("Could not find resource")
         }
     }
