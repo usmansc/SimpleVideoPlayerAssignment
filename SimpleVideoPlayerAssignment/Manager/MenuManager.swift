@@ -15,8 +15,8 @@ class MenuManager {
     init() {
         // Make sure to have all options here,
         menuItems = [
-            MenuItem(title: "Home", image: "journal", destination: "ContentView", isSelected: false),
-            MenuItem(title: "Detail", image: "goals", destination: "DetailView", isSelected: false)
+            MenuItem(title: "Home", image: "", destination: "ContentView", isSelected: false),
+            MenuItem(title: "Detail", image: "", destination: "DetailView", isSelected: false)
         ]
     }
 
