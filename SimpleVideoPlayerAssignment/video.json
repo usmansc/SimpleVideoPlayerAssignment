@@ -1,47 +1,48 @@
 [{
         "id": 1,
-        "name": "Big Buck Bunny",
-        "url": "https://vimeo.com/1084537",
+        "name": "Blender Open Movie",
+        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
         "inoutPoints": [{
             "from": 0.2,
-            "to": 0.8
+            "to": 0.4
+        },
+        {
+            "from": 0.5,
+            "to": 0.7
+        },
+        {
+            "from": 0.8,
+            "to": 1.0
         }]
     },
     {
         "id": 2,
-        "name": "The Boys From Summer",
-        "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4",
-        "inoutPoints": [{
-                "from": 0.0,
-                "to": 0.1
-            },
-            {
-                "from": 0.9,
-                "to": 1.0
-            }
-        ]
-    }, {
-        "id": 0,
-        "name": "The OceanMaker",
-        "url": "https://vimeo.com/126090217",
+        "name": "Big Buck Bunny",
+        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
         "inoutPoints": [{
                 "from": 0.2,
                 "to": 0.4
             },
             {
-                "from": 0.5,
-                "to": 0.7
-            },
-            {
                 "from": 0.8,
-                "to": 1.0
+                "to": 0.9
+            }
+        ]
+    }, {
+        "id": 0,
+        "name": "Chromecast",
+        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+        "inoutPoints": [
+            {
+                "from": 0.2,
+                "to": 0.8
             }
         ]
     },
     {
         "id": 3,
-        "name": " The Boy Who Turned Yellow",
-        "url": "https://vimeo.com/93629563",
+        "name": "HBO GO",
+        "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
         "inoutPoints": []
     }
 ]

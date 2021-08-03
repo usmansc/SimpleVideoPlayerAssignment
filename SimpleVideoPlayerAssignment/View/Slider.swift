@@ -12,9 +12,9 @@ import AVKit
 struct Slider: View {
     @State var videoPosition: CMTime = CMTime(seconds: 0, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
     @State var location: CGPoint = CGPoint(x: 0.0, y: 0.0)
-    @State var inOutZonePoisition: CGPoint = CGPoint(x: 0.0, y: 0.0)
     @State var updateLocation: Bool = false
     @State var secondScale: Double = 0.0
+    @State var position: CGPoint = CGPoint(x: 0.0, y: 0.0)
     @EnvironmentObject var detailViewModel: DetailViewModel
     var videoPlayer: AVPlayer
     var inOutZones: [InOutParameter]
@@ -28,10 +28,12 @@ struct Slider: View {
                     .background(Color.black)
                     .cornerRadius(25.0)
                     .padding()
-                ForEach(self.detailViewModel.chosenVideo.inoutPoints, id: \.self) { zone in
+                ForEach(self.detailViewModel.chosenVideo.inoutPoints.indices, id: \.self) { index in
 
-                    InOutZone(geometry: geometry, position: self.detailViewModel.calculateInOutZonePosition(scale: self.secondScale, playFrom: zone.from, playUntil: zone.to, videoTotalTime: self.detailViewModel.videoPlayer.currentItem!.duration), zone: zone).onAppear(perform: {
-                    })
+                    InOutZone(geometry: geometry, position: self.detailViewModel.inoutZonePositions[index], zone: self.detailViewModel.chosenVideo.inoutPoints[index]).onChange(of: secondScale) { _ in
+                        let zone = self.detailViewModel.chosenVideo.inoutPoints[index]
+                        self.detailViewModel.inoutZonePositions[index] = self.detailViewModel.calculateInOutZonePosition(scale: self.secondScale, playFrom: zone.from, playUntil: zone.to, videoTotalTime: self.detailViewModel.videoPlayer.currentItem!.asset.duration)
+                    }
                 }
 
                 VerticalLine(videoPosition: $videoPosition, location: $location, secondScale: $secondScale, geometry: geometry)
@@ -50,8 +52,7 @@ struct Slider: View {
             )
             .onAppear(perform: {
                 let time = CMTime(seconds: 1, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
-                self.secondScale = self.detailViewModel.calculateScale(totalTime: self.detailViewModel.videoPlayer.currentItem!.duration, width: geometry.size.width)
-                self.inOutZonePoisition = self.detailViewModel.calculateInOutZonePosition(scale: self.secondScale, playFrom: inOutZones.first?.from ?? 0.0, playUntil: inOutZones.first?.to ?? 0.0, videoTotalTime: self.detailViewModel.videoPlayer.currentItem!.duration)
+                self.secondScale = self.detailViewModel.calculateScale(totalTime: self.detailViewModel.videoPlayer.currentItem!.asset.duration, width: geometry.size.width)
                 _ = self.detailViewModel.videoPlayer.addPeriodicTimeObserver(forInterval: time, queue: .main) {
                     time in
                     // Check if the video is out of the activeZone, if so loop back to the beggining
@@ -61,7 +62,7 @@ struct Slider: View {
                         if currentItem.currentTime().seconds >= currentItem.asset.duration.seconds * (self.detailViewModel.activeZone?.to ?? 1.0) {
                             // loop the video to the beggining and set the videoPosition to that time // We can do this with AVLooper but I am not sure if this is allowed because we are supposed to use AVPlayer...
                             let newTime = CMTime(seconds: currentItem.asset.duration.seconds * (self.detailViewModel.activeZone?.from ?? 0.0), preferredTimescale: CMTimeScale(NSEC_PER_SEC))
-                            self.detailViewModel.videoPlayer.seek(to: newTime)
+                            self.detailViewModel.videoPlayer.seek(to: newTime, toleranceBefore: CMTime.zero, toleranceAfter: CMTime.zero)
                             self.videoPosition = newTime
                             self.detailViewModel.playVideo()
                         }
@@ -75,6 +76,9 @@ struct Slider: View {
         .background(Color.black)
         .cornerRadius(25.0)
         .padding()
-
+        .onAppear {
+            print(self.detailViewModel.inOutZones)
+            print("Appeared slider")
+        }
     }
 }

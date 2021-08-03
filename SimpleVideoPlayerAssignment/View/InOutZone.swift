@@ -18,7 +18,7 @@ struct InOutZone: View {
         Rectangle()
             .fill(active ? Color.green : Color.gray)
             .frame(width: position.y - position.x, height: 40, alignment: .bottomLeading)
-
+            .border(Color.green)
             .position(x: position.x + (position.y - position.x) / 2, y: geometry.size.height/2)
             .onChange(of: self.detailViewModel.activeZone, perform: { _ in
                 self.active = isActiveInOutZone()

@@ -14,6 +14,7 @@ final class DetailViewModel: ObservableObject {
     @Published var chosenVideo: Video = Video(id: -1, name: "", url: "", inoutPoints: [])
     @Published var videos: [Video] = []
     @Published var activeZone: InOutParameter?
+    @Published var inoutZonePositions: [CGPoint] = []
     @Published var videoPlayer = AVPlayer(url: URL(string: "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")!)
     init() {
         _ = VideoManager()
@@ -33,7 +34,7 @@ final class DetailViewModel: ObservableObject {
 
     /// Use this function to select video to play and prepare videoplayer
     /// - Parameter video: chosen video
-    func chooseVideo(video: Video) {
+    func chooseVideo(video: Video, handler: @escaping () -> Void) {
         self.chosenVideo = video
         self.inOutZones = video.inoutPoints
         self.inOutZones.sort(by: {$0.from < $1.to})
@@ -41,11 +42,18 @@ final class DetailViewModel: ObservableObject {
         self.videoPlayer = AVPlayer(url: URL(string: video.url)!)
         // seek the first zone and play it
 
+        // create fill position array
+        inoutZonePositions = []
+        for _ in self.inOutZones {
+            inoutZonePositions.append(CGPoint(x: 0.0, y: 0.0))
+        }
         if let zone = self.activeZone {
-            self.videoPlayer.seek(to: CMTime(seconds: zone.from * self.videoPlayer.currentItem!.asset.duration.seconds, preferredTimescale: CMTimeScale(NSEC_PER_SEC))) // Update location of the hand
+            self.videoPlayer.seek(to: CMTime(seconds: zone.from * self.videoPlayer.currentItem!.asset.duration.seconds, preferredTimescale: CMTimeScale(NSEC_PER_SEC)), toleranceBefore: CMTime.zero, toleranceAfter: CMTime.zero)
 
             self.activeZone = zone
         }
+        self.playVideo()
+        handler()
     }
 
     /// Use this function to calculate the on-screen scale
@@ -78,6 +86,9 @@ final class DetailViewModel: ObservableObject {
         return CGPoint(x: x, y: y)
     }
 
+    /// Use this function to seek exact time in the video
+    /// - Parameter location: location of the tap on the slider
+    /// - Parameter secondScale: scale of the one second on the display, to get use calculateScale function
     func seekVideo(location: Double, secondScale: Double) {
         // Now I have to determine the users touch and whether it is in the some inoutZone or not ofc if it does exists. If it doesnt just seek, if it does play the closest one.
         let tappedSecond = location / secondScale
@@ -90,7 +101,7 @@ final class DetailViewModel: ObservableObject {
                     if zone.from * currentItem.asset.duration.seconds <= tappedSecond && zone.to * currentItem.asset.duration.seconds >= tappedSecond {
                         // Set this as active zone and return
                         let videoPosition = CMTime(seconds: location / secondScale, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
-                        self.videoPlayer.seek(to: videoPosition)
+                        self.videoPlayer.seek(to: videoPosition, toleranceBefore: CMTime.zero, toleranceAfter: CMTime.zero)
                         self.activeZone = zone
                         return
                     }
@@ -107,13 +118,13 @@ final class DetailViewModel: ObservableObject {
                 }
                 // Seek to the closest zone and set it as active zone
                 let videoPosition = CMTime(seconds: closestZone.from * currentItem.asset.duration.seconds, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
-                self.videoPlayer.seek(to: videoPosition)
+                self.videoPlayer.seek(to: videoPosition, toleranceBefore: CMTime.zero, toleranceAfter: CMTime.zero)
                 self.activeZone = closestZone
             }
             return
         }
         // If there are no zones just seek and play
         let videoPosition = CMTime(seconds: location / secondScale, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
-        self.videoPlayer.seek(to: videoPosition)
+        self.videoPlayer.seek(to: videoPosition, toleranceBefore: CMTime.zero, toleranceAfter: CMTime.zero)
     }
 }

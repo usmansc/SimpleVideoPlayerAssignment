@@ -10,10 +10,10 @@ import SwiftUI
 import AVKit
 
 struct DetailView: View {
-
     var timeObserverToken: Any?
     @State var playing: Bool = true
     @EnvironmentObject var detailViewModel: DetailViewModel
+    @EnvironmentObject var menuViewModel: MenuViewModel
 
     var body: some View {
         VStack {
@@ -30,8 +30,16 @@ struct DetailView: View {
 
             Slider(videoPlayer: self.detailViewModel.videoPlayer, inOutZones: self.detailViewModel.chosenVideo.inoutPoints).environmentObject(detailViewModel)
         }
+        .navigationBarItems(trailing: Button(action: {
+            self.menuViewModel.selectItem(which: self.menuViewModel.items[0])
+        }) {
+            Text("Back")
+        })
         .padding()
         .onAppear(perform: {
+            print(self.detailViewModel.inOutZones)
+            print("Appeared")
+
             self.detailViewModel.playVideo()
         })
         .onDisappear(perform: {

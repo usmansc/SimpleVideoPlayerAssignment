@@ -10,9 +10,10 @@ import SwiftUI
 @main
 struct SimpleVideoPlayerAssignmentApp: App {
     @StateObject var detailViewModel: DetailViewModel = DetailViewModel()
+    @StateObject var menuViewModel = MenuViewModel()
     var body: some Scene {
         WindowGroup {
-            ContentView().environmentObject(detailViewModel)
+            ContentView().environmentObject(detailViewModel).environmentObject(menuViewModel)
         }
     }
 }
