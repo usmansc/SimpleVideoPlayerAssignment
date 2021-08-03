@@ -13,5 +13,9 @@ For the purposes of this assignment, you may embed static files to simulate back
  I did not use AVPlayerLooper because I was not sure if I could
 
 # Result
-https://user-images.githubusercontent.com/48035232/128065589-d6291bae-4ac4-496c-b5b3-ad3b4e020719.mp4
+
+
+https://user-images.githubusercontent.com/48035232/128065674-3edced20-f4ca-48f7-b5af-75d86e44935a.mp4
+
+
 
