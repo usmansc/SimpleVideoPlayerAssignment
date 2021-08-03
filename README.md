@@ -9,5 +9,5 @@ Try to make looping playback seamless (without the pause on the loop point).
 
 For the purposes of this assignment, you may embed static files to simulate back-end requests.
  
- #Note:
+ # Note:
  I did not use AVPlayerLooper because I was not sure if I could
