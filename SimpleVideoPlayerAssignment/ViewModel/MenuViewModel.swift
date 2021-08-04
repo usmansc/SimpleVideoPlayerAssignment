@@ -13,7 +13,7 @@ import CoreData
 
 final class MenuViewModel: ObservableObject {
     @Published var items = [MenuItem]()
-    @Published var selected: Int = 3
+    @Published var selected: Int = 0
     @Published var isToggled: Bool = false
     @Published var titleSelected = false
     @Published var title: String = ""

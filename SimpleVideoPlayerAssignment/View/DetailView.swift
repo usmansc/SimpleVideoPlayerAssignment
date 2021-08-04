@@ -30,16 +30,16 @@ struct DetailView: View {
 
             Slider(videoPlayer: self.detailViewModel.videoPlayer, inOutZones: self.detailViewModel.chosenVideo.inoutPoints).environmentObject(detailViewModel)
         }
-        .navigationBarItems(trailing: Button(action: {
-            self.menuViewModel.selectItem(which: self.menuViewModel.items[0])
-        }) {
-            Text("Back")
-        })
+        .toolbar {
+            Button(action: {
+                self.menuViewModel.selectItem(which: self.menuViewModel.items[0])
+            }) {
+                self.menuViewModel.selected != 0 ? Text("Back") : Text("")
+            }
+                        }
+
         .padding()
         .onAppear(perform: {
-            print(self.detailViewModel.inOutZones)
-            print("Appeared")
-
             self.detailViewModel.playVideo()
         })
         .onDisappear(perform: {

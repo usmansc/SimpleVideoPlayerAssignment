@@ -76,9 +76,5 @@ struct Slider: View {
         .background(Color.black)
         .cornerRadius(25.0)
         .padding()
-        .onAppear {
-            print(self.detailViewModel.inOutZones)
-            print("Appeared slider")
-        }
     }
 }
